@@ -1,6 +1,6 @@
 {
     "name": "not-inform-rule-tag",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "not-* family sink rule by tag",
     "main": "index.js",
     "scripts": {
@@ -27,7 +27,7 @@
     },
     "homepage": "https://github.com/interrupter/not-inform-rule-tag#readme",
     "dependencies": {
-        "not-inform": "0.0.3",
+        "not-inform": "0.0.7",
         "not-path": "*"
     },
     "devDependencies": {
