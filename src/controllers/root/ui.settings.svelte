@@ -1,4 +1,6 @@
 <script>
+    import { createEventDispatcher } from "svelte";
+    let dispatch = createEventDispatcher();
     export let value;
     export let readonly;
     export let disabled;
@@ -23,7 +25,7 @@
             value.tags = value.tags;
             value = value;
             newTag = "";
-            dispatch("change", { index, _id: value._id, value });
+            dispatch("change", { _id: value._id, value });
         }
     }
 </script>
