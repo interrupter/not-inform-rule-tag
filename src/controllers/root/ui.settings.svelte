@@ -1,11 +1,9 @@
 <script>
     import { createEventDispatcher } from "svelte";
     let dispatch = createEventDispatcher();
-    export let value;
-    export let readonly;
-    export let disabled;
+    let { value = $bindable(), readonly, disabled } = $props();
 
-    let newTag = "";
+    let newTag = $state("");
 
     function deleteTag(e) {
         e && e.preventDefault();
@@ -45,8 +43,8 @@
                             >{tag}<button
                                 data-tag={tag}
                                 class="delete is-small"
-                                on:click={deleteTag}
-                            /></span
+                                onclick={deleteTag}
+></button></span
                         >
                     {/each}
                 </p>
@@ -64,7 +62,7 @@
                         />
                     </p>
                     <div class="control is-small">
-                        <button class="button is-info" on:click={addTag}
+                        <button class="button is-info" onclick={addTag}
                             >Добавить</button
                         >
                     </div>
