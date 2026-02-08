@@ -1,7 +1,10 @@
 <script>
-    import { createEventDispatcher } from "svelte";
-    let dispatch = createEventDispatcher();
-    let { value = $bindable(), readonly, disabled } = $props();
+    let {
+        value = $bindable(),
+        readonly,
+        disabled,
+        onchange = () => {},
+    } = $props();
 
     let newTag = $state("");
 
@@ -12,7 +15,7 @@
             value.tags.splice(value.tags.indexOf(tag), 1);
             value.tags = value.tags;
             value = value;
-            dispatch("change", { _id: value._id, value });
+            onchange({ _id: value._id, value });
         }
         return false;
     }
@@ -23,7 +26,7 @@
             value.tags = value.tags;
             value = value;
             newTag = "";
-            dispatch("change", { _id: value._id, value });
+            onchange({ _id: value._id, value });
         }
     }
 </script>
@@ -44,7 +47,7 @@
                                 data-tag={tag}
                                 class="delete is-small"
                                 onclick={deleteTag}
-></button></span
+                            ></button></span
                         >
                     {/each}
                 </p>
@@ -56,7 +59,7 @@
                             class="input is-success"
                             type="text"
                             placeholder="новая метка"
-                            bind:value={newTag}
+                            value={newTag}
                             {readonly}
                             {disabled}
                         />
